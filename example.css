@@ -1,0 +1,22 @@
+@media (max-width: 800px) {
+	/* This is a comment */
+	#main #comments {
+		margin: 0px;
+		width: auto;
+		background: red;
+	}
+	#main #buttons {
+		padding: 5px 10px;
+		color: blue;
+	}
+}
+
+/* This is another comment */
+#main #content {
+	margin: 0 7.6%;
+	width: auto;
+}
+#nav-below {
+	border-bottom: 1px solid #ddd;
+	margin-bottom: 1.625em;
+}

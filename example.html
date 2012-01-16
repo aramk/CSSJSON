@@ -1,0 +1,56 @@
+<script type="text/javascript" src="cssjson.js"></script>
+<script type="text/javascript">
+
+    // Dummy CSS
+    var css = '\
+    @media (max-width: 800px) {\n\
+    	/* This is a comment */\n\
+    	#main #comments {\n\
+    		margin: 0px;\n\
+    		width: auto;\n\
+    		background: red;\n\
+    	}\n\
+    	#main #buttons {\n\
+    		padding: 5px 10px;\n\
+    		color: blue;\n\
+    	}\n\
+    }\n\
+\n\
+    /* This is another comment */\n\
+    #main #content {\n\
+    	margin: 0 7.6%;\n\
+    	width: auto;\n\
+    }\n\
+    #nav-below {\n\
+    	border-bottom: 1px solid #ddd;\n\
+    	margin-bottom: 1.625em;\n\
+    }\n\
+    ';
+    exampleCSSJSON(css);
+    
+    function exampleCSSJSON(cssString) {
+        var json2 = CSSJSON.toJSON(cssString); // Not keep order
+    	if (typeof console != 'undefined') {
+    	    console.log('JSON:\n');
+    	    console.dir(json2);
+    	    console.log('\n\n');
+	    }
+        document.write('<strong>JSON</strong><br/><pre><code>'+JSON.stringify(json2)+'</pre></code>');
+    	
+    	var json = CSSJSON.toJSON(cssString, true); // true = Keep order
+    	if (typeof console != 'undefined') {
+    	    console.log('JSON - KEEPING ORDER OF COMMENTS:\n');
+    	    console.dir(json);
+    	    console.log('\n\n');
+	    }
+        document.write('<br/><strong>JSON - KEEPING ORDER OF COMMENTS</strong><br/><pre><code>'+JSON.stringify(json)+'</pre></code>');
+    	
+    	if (typeof console != 'undefined') {
+    	    var css = CSSJSON.toCSS(json);
+    	    console.log('CSS:\n');
+    	    console.log(css + '\n\n');
+	    }
+        document.write('<br/><strong>CSS</strong><br/><pre><code>'+css+'</pre></code>');
+    }
+    
+</script>
