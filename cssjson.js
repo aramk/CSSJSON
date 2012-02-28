@@ -31,7 +31,7 @@ var CSSJSON = new function() {
 	var lineAttrX = /([^\:]+):([^\;]*);/;
 	
 	// This is used, a concatenation of all above. We use alternation to capture.
-	var altX = /(\/\*.*?\*\/)|([^\s\;\{\}][^\;\{\}]*(?=\{))|(\})|([^\;\{\}\/]+\;)/g;
+	var altX = /(\/\*.*?\*\/)|([^\s\;\{\}][^\;\{\}]*(?=\{))|(\})|([^\;\{\}]+\;)/g;
 	
 	// Capture groups
 	var capComment = 1;
