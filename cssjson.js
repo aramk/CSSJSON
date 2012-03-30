@@ -44,18 +44,23 @@ var CSSJSON = new function() {
 		return getCSSRuleNode(css, keepOrder);
 	}
 
+	var isEmpty = function(x) {
+		return typeof x == 'undefined' || x.length == 0 || x == null;
+	}
+
 	// Input is css string and current pos, returns JSON object
 	var getCSSRuleNode = function(cssString, keepOrder) {
 		var node = {};
 		var match = null;
 		var count = 0;
-		
-		while ( (match = altX.exec(cssString)) != null) {
-			if (typeof match[capComment] != 'undefined') {
+
+		while ( (match = altX.exec(cssString)) != null ) {
+			if (!isEmpty(match[capComment])) {
 				// Comment
 				var add = match[capComment].trim();
 				node[count++] = add;
-			} else if (typeof match[capSel] != 'undefined') {
+			} else if (!isEmpty(match[capSel])) {
+			//} else if (typeof match[capSel] != 'undefined') {
 				// New node, we recurse
 				var name = match[capSel].trim();
 				var newNode = getCSSRuleNode(cssString, keepOrder);
@@ -71,10 +76,12 @@ var CSSJSON = new function() {
 				} else {
 					node[name] = newNode;
 				}
-			} else if (typeof match[capEnd] != 'undefined') {
+			} else if (!isEmpty(match[capEnd])) {
+			//} else if (typeof match[capEnd] != 'undefined') {
 				// Node has finished
 				return node;
-			} else if (typeof match[capAttr] != 'undefined') {
+			} else if (!isEmpty(match[capAttr])) {
+			//} else if (typeof match[capAttr] != 'undefined') {
 				var line = match[capAttr].trim();
 				var attr = lineAttrX.exec(line);
 				if (attr) {
