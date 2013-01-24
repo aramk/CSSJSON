@@ -6,7 +6,7 @@ Converts CSS to JSON and back.
 
 ## Usage
 
-	// To JSON, ignoring order of comments etc
+	// To JSON
 	var json = CSSJSON.toJSON(cssString);
 
 	// To CSS
