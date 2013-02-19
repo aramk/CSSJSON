@@ -144,7 +144,15 @@ var CSSJSON = new function () {
                         obj['type'] = 'attr';
                         node[count++] = obj;
                     } else {
-                        node.attributes[name] = value;
+                        if (name in node.attributes) {
+                            var currVal = node.attributes[name];
+                            if (!(currVal instanceof Array)) {
+                                node.attributes[name] = [currVal];
+                            }
+                            node.attributes[name].push(value);
+                        } else {
+                            node.attributes[name] = value;
+                        }
                     }
                 } else {
                     // Semicolon terminated line
@@ -175,7 +183,14 @@ var CSSJSON = new function () {
         }
         if (node.attributes) {
             for (i in node.attributes) {
-                cssString += strAttr(i, node.attributes[i], depth);
+                var att = node.attributes[i];
+                if (att instanceof Array) {
+                    for (var j = 0; j < att.length; j++) {
+                        cssString += strAttr(i, att[j], depth);
+                    }
+                } else {
+                    cssString += strAttr(i, att, depth);
+                }
             }
         }
         if (node.children) {

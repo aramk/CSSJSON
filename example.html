@@ -1,3 +1,18 @@
+<body>
+<style>
+    body {
+        font-family: arial, sans-serif;
+        font-size: 18px;
+    }
+    pre {
+        background: #eee;
+        padding: 10px;
+        width: 800px;
+        white-space: pre-wrap;
+        word-break: break-all;
+    }
+</style>
+
 <!-- Add this if you're supporting IE 7, 8 -->
 <script type="text/javascript" src="json2.js"></script>
 <script type="text/javascript" src="cssjson.js"></script>
@@ -10,6 +25,7 @@
     		margin: 0px;\n\
     		width: auto;\n\
     		background: red;\n\
+            background: img("example.png");\n\
     	}\n\
     	#main #buttons {\n\
     		padding: 5px 10px;\n\
@@ -27,6 +43,7 @@
     	background-image: url(http://www.example.com/images/im.jpg);\n\
     }\n\
     ';
+
     exampleCSSJSON(css);
     
     function exampleCSSJSON(cssString) {
@@ -36,14 +53,15 @@
     	    console.dir(json);
     	    console.log('\n\n');
 	    }
-        document.write('<strong>JSON</strong><br/><pre><code>'+JSON.stringify(json)+'</pre></code>');
+        document.write('<strong>JSON</strong><br/><pre>'+JSON.stringify(json, undefined, 2)+'</pre>');
     	
     	var css = CSSJSON.toCSS(json);
     	if (typeof console != 'undefined') {
     	    console.log('CSS:\n');
     	    console.log(css + '\n\n');
 	    }
-        document.write('<br/><strong>CSS</strong><br/><pre><code>'+css+'</pre></code>');
+        document.write('<br/><strong>CSS</strong><br/><pre>'+css+'</pre>');
     }
     
 </script>
+</body>
