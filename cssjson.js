@@ -1,10 +1,11 @@
 /**
- * CSS-JSON Converter for JavaScript, v.2.0 By Aram Kocharyan, http://aramk.com/
+ * CSS-JSON Converter for JavaScript
  * Converts CSS to JSON and back.
+ * Version 2.1
  *
- * Released under the MIT license
- *
- * Copyright (c) 2013 Aram Kocharyan
+ * Released under the MIT license.
+ * 
+ * Copyright (c) 2013 Aram Kocharyan, http://aramk.com/
 
  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
  documentation files (the "Software"), to deal in the Software without restriction, including without limitation
