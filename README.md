@@ -1,8 +1,8 @@
 # CSS-JSON Converter for JavaScript
 
-CSS-JSON Converter for JavaScript
-Converts CSS to JSON and back.
-Version 2.1
+CSS-JSON Converter for JavaScript  
+Converts CSS to JSON and back.  
+Version 2.1  
 
 Released under the MIT license.
 
