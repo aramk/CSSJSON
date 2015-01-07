@@ -4,7 +4,7 @@
  * Version 2.1
  *
  * Released under the MIT license.
- * 
+ *
  * Copyright (c) 2013 Aram Kocharyan, http://aramk.com/
 
  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
@@ -222,3 +222,5 @@ var CSSJSON = new function () {
     };
 
 };
+
+module.exports = CSSJSON;
