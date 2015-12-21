@@ -224,10 +224,10 @@ var CSSJSON = new function () {
     base.toHEAD = function (data, id, replace) {
         var head = document.getElementsByTagName('head')[0];
         var xnode = document.getElementById(id);
-        var isValidNode = (xnode !== null && xnode instanceof HTMLStyleElement);
+        var _xnodeTest = (xnode !== null && xnode instanceof HTMLStyleElement);
 
         if (isEmpty(data) || !(head instanceof HTMLHeadElement)) return;
-        if (isValidNode) {
+        if (_xnodeTest) {
             if (replace === true || isEmpty(replace)) {
                 xnode.removeAttribute('id');
             } else return;
@@ -241,6 +241,8 @@ var CSSJSON = new function () {
 
         if (!isEmpty(id)) {
             node.id = id;
+        } else {
+            node.id = 'cssjson_' + timestamp();
         }
         if (node.styleSheet) {
             node.styleSheet.cssText = data;
@@ -250,8 +252,16 @@ var CSSJSON = new function () {
 
         head.appendChild(node);
 
-        if (isValidNode) {
-            xnode.parentNode.removeChild(xnode);
+        if (isValidStyleNode(node)) {
+            if (_xnodeTest) {
+                xnode.parentNode.removeChild(xnode);
+            }
+        } else {
+            node.parentNode.removeChild(node);
+            if (_xnodeTest) {
+                xnode.setAttribute('id', id);
+                node = xnode;
+            } else return;
         }
 
         return node;
