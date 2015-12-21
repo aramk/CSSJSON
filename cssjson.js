@@ -58,9 +58,9 @@ var CSSJSON = new function () {
         return typeof x == 'undefined' || x.length == 0 || x == null;
     };
 
-	var isCssJson = function (node) {
-		return !isEmpty(node) ? (node.attributes && node.children) : false;
-	}
+    var isCssJson = function (node) {
+        return !isEmpty(node) ? (node.attributes && node.children) : false;
+    }
 
     /**
      * Input is css string and current pos, returns JSON object
@@ -212,62 +212,62 @@ var CSSJSON = new function () {
         return cssString;
     };
 
-	/**
+    /**
      * @param data
      *            You can pass css string or the CSSJS.toJSON return value.
      * @param id (Optional)
      *            To identify and easy removable of the style element
      * @param replace (Optional. defaults to TRUE)
      *            Whether to remove or simply do nothing
-	 * @return HTMLLinkElement
+     * @return HTMLLinkElement
      */
-	base.toHEAD = function (data, id, replace) {
-		var head = document.getElementsByTagName('head')[0];
-		var xnode = document.getElementById(id);
-		var isValidNode = (xnode !== null && xnode instanceof HTMLStyleElement);
+    base.toHEAD = function (data, id, replace) {
+        var head = document.getElementsByTagName('head')[0];
+        var xnode = document.getElementById(id);
+        var isValidNode = (xnode !== null && xnode instanceof HTMLStyleElement);
 
-		if (isEmpty(data) || !(head instanceof HTMLHeadElement)) return;
-		if (isValidNode) {
-			if (replace === true || isEmpty(replace)) {
-				xnode.removeAttribute('id');
-			} else return;
-		}
-		if (isCssJson(data)) {
-			data = base.toCSS(data);
-		}
+        if (isEmpty(data) || !(head instanceof HTMLHeadElement)) return;
+        if (isValidNode) {
+            if (replace === true || isEmpty(replace)) {
+                xnode.removeAttribute('id');
+            } else return;
+        }
+        if (isCssJson(data)) {
+            data = base.toCSS(data);
+        }
 
-		var node = document.createElement('style');
-		node.type = 'text/css';
+        var node = document.createElement('style');
+        node.type = 'text/css';
 
-		if (!isEmpty(id)) {
-			node.id = id;
-		}
-	    if (node.styleSheet) {
-	        node.styleSheet.cssText = data;
-	    } else {
-	        node.appendChild(document.createTextNode(data));
-	    }
+        if (!isEmpty(id)) {
+            node.id = id;
+        }
+        if (node.styleSheet) {
+            node.styleSheet.cssText = data;
+        } else {
+            node.appendChild(document.createTextNode(data));
+        }
 
-		head.appendChild(node);
+        head.appendChild(node);
 
-		if (isValidNode) {
-			xnode.parentNode.removeChild(xnode);
-		}
+        if (isValidNode) {
+            xnode.parentNode.removeChild(xnode);
+        }
 
-		return node;
-	};
+        return node;
+    };
 
     // Helpers
 
-	var isValidStyleNode = function (node) {
-		return (node instanceof HTMLStyleElement) && node.sheet.cssRules.length > 0;
-	}
+    var isValidStyleNode = function (node) {
+        return (node instanceof HTMLStyleElement) && node.sheet.cssRules.length > 0;
+    }
 
-	var timestamp = function () {
-		return Date.now() || +new Date();
-	};
+    var timestamp = function () {
+        return Date.now() || +new Date();
+    };
 
-	var strAttr = function (name, value, depth) {
+    var strAttr = function (name, value, depth) {
         return '\t'.repeat(depth) + name + ': ' + value + ';\n';
     };
 
