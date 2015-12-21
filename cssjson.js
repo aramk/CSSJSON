@@ -267,6 +267,12 @@ var CSSJSON = new function () {
         return node;
     };
 
+    // Alias
+
+    if (typeof window != 'undefined') {
+        window.createCSS = base.toHEAD;
+    }
+
     // Helpers
 
     var isValidStyleNode = function (node) {
