@@ -14,6 +14,11 @@ Released under the MIT license.
 	// To CSS
 	var css = CSSJSON.toCSS(jsonObject);
 
+    // Appending to DOM (HTMLHeadElement)
+    // alias (global): createCSS(css);
+    // CSSJSON.toHEAD(json);
+    CSSJSON.toHEAD(css); // returns HTMLStyleElement
+
 ## Sample
 
 See example.html
