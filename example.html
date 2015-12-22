@@ -45,7 +45,7 @@
     ';
 
     exampleCSSJSON(css);
-    
+
     function exampleCSSJSON(cssString) {
 		var json = CSSJSON.toJSON(cssString);
     	if (typeof console != 'undefined') {
@@ -54,14 +54,55 @@
     	    console.log('\n\n');
 	    }
         document.write('<strong>JSON</strong><br/><pre>'+JSON.stringify(json, undefined, 2)+'</pre>');
-    	
+
     	var css = CSSJSON.toCSS(json);
     	if (typeof console != 'undefined') {
     	    console.log('CSS:\n');
     	    console.log(css + '\n\n');
 	    }
-        document.write('<br/><strong>CSS</strong><br/><pre>'+css+'</pre>');
     }
-    
+
+	// Sample to .toHEAD
+	var rgbInterval = 2000;
+	var rgbCss = '\
+		body {\n\
+			-webkit-transition: background-color ?ms linear;\n\
+			-moz-transition: background-color ?ms linear;\n\
+			-o-transition: background-color ?ms linear;\n\
+			-ms-transition: background-color ?ms linear;\n\
+			transition: background-color ?ms linear;\n\
+			-webkit-animation-direction: alternate;\n\
+			animation-direction: alternate;\n\
+			-webkit-animation-iteration-count: 2;\n\
+			animation-iteration-count: 2;\n\
+			margin: 20px;\n\
+		}\
+	';
+	CSSJSON.toHEAD(rgbCss.replace('?', Math.abs(0.6 * rgbInterval)));
+
+	function runRGB(btn) {
+		if (window._rgbTimer) {
+			btn.innerHTML = '&#9654; RGB';
+			clearInterval(window._rgbTimer);
+			delete window._rgbTimer;
+			return;
+		} else {
+			window._rgbC = (window._rgbC) ? window._rgbC : [0, '#ff1935', '#00bd3a', '#0063cd', '#fff'];
+		}
+		var getRGB = function() {
+			window._rgbC[0] = (window._rgbC[0] >= window._rgbC.length - 1) ? 1 : window._rgbC[0] += 1;
+			return window._rgbC[window._rgbC[0]];
+		}
+		var doCSSChange = function() {
+			CSSJSON.toHEAD('body { background-color: ' + (cc = getRGB()) + '; }', 'RGB');
+			btn.innerHTML = '&#10073;&#10073; RGB (' + cc + ')';
+		}
+		if (!window._rgbTimer) {
+			doCSSChange();
+			window._rgbTimer = setInterval(doCSSChange, rgbInterval);
+		}
+	}
+
 </script>
+<button onclick="runRGB(this);">&#9654; RGB</button>
 </body>
