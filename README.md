@@ -6,6 +6,18 @@ Version 2.1
 
 Released under the MIT license.
 
+## Installation
+
+### Bower
+```bash
+bower install aramk-css-to-json --save
+```
+
+### NPM
+```bash
+npm install css-to-json
+```
+
 ## Usage
 
 	// To JSON
