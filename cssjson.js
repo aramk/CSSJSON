@@ -121,7 +121,7 @@ var CSSJSON = new function () {
                     } else {
                         var bits = [name];
                     }
-                    for (i in bits) {
+                    for (var i = 0; i < bits.length; i++) {
                         var sel = bits[i].trim();
                         if (sel in node.children) {
                             for (var att in newNode.attributes) {
