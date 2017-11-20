@@ -1,0 +1,26 @@
+{
+  "name": "css-to-json",
+  "version": "2.1.0",
+  "description": "CSS-JSON-CSS javascript converter.",
+  "main": "cssjson.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aramk/CSSJSON.git"
+  },
+  "authors": [
+    "Aram Kocharyan https://github.com/aramk",
+    "Shoukath Mohammed https://github.com/Mohammed9531" 
+  ],
+  "keywords": [
+    "css",
+    "json"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aramk/CSSJSON/issues"
+  },
+  "homepage": "https://github.com/aramk/CSSJSON#readme"
+}
