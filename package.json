@@ -2,10 +2,10 @@
   "name": "cssjson",
   "version": "3.0.0",
   "description": "Converts CSS to JSON and back.",
-  "main": "dist/CSSJSON.min.js",
+  "main": "dist/index.js",
   "types": "dist/src/index.d.ts",
   "scripts": {
-    "build": "npm run lint && webpack --mode production",
+    "build": "npm run lint && npm run test && webpack --mode production && tsc -p ./",
     "lint": "npx eslint '**/*.{ts,js}' --fix",
     "prepare": "npm run build",
     "prepublishOnly": "npm run build",
