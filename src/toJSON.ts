@@ -25,10 +25,27 @@ const defaultArgs = {
   stripComments: false,
   split: false,
 };
+
+export interface attributes {
+  [attribute: string]: string
+}
+
+export interface children {
+  [attribute: string]: {
+    children: children,
+    attributes: attributes
+  }
+}
+
+export interface output {
+  children: children,
+  attributes: attributes
+}
+
 export const toJSON = function (
   cssString: string,
   args = defaultArgs
-): Record<any, any> {
+): output {
   const node: any = {
     children: {},
     attributes: {},
