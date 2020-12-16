@@ -1,40 +1,55 @@
+
 # CSS-JSON Converter for JavaScript
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [About](#about)
+- [Installation](#installation)
+  - [NPM](#npm)
+- [Usage](#usage)
+  - [JavaScript / Typescript](#javascript--typescript)
+  - [npm run / CLI](#npm-run--cli)
+- [Sample](#sample)
+  - [JSON](#json)
+  - [CSS](#css)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+## About
 
 CSS-JSON Converter for JavaScript  
 Converts CSS to JSON and back.  
-Version 2.1  
+Version 3.0.0
 
 Released under the MIT license.
 
 ## Installation
 
-### Bower
-```bash
-bower install aramk-css-to-json --save
-```
-
 ### NPM
+
 ```bash
-npm install css-to-json
+npm install cssjson
 ```
 
 ## Usage
 
-### JavaScript
-```javascript
+### JavaScript / Typescript
+
+```typescript
+
+import { toCSS, toJSON } from 'cssjson';
+
 // To JSON
-var json = CSSJSON.toJSON(cssString);
+const json = toJSON(cssString);
 
 // To CSS
-var css = CSSJSON.toCSS(jsonObject);
-
-// Appending to DOM (HTMLHeadElement)
-// alias (global): createCSS(css);
-// CSSJSON.toHEAD(json);
-CSSJSON.toHEAD(css); // returns HTMLStyleElement
+const css = toCSS(jsonObject);
 ```
 
 ### npm run / CLI
+
 To use CSSJSON from your command-line interface or with npm scripts there is [cssjson-cli](https://github.com/jakedex/cssjson-cli).
 
 ```
@@ -43,7 +58,7 @@ $ cssjson input_file [--to-css] [--output|-o output_file]
 
 ## Sample
 
-See example.html
+See `src/__tests__/toCSSandJSON.spec.ts` 
 
 ### JSON
 
@@ -94,23 +109,23 @@ See example.html
 
 ```css
 @media (max-width: 800px) {
-    #main #comments {
-        margin: 0px;
-        width: auto;
-        background: red;
-    }
-    #main #buttons {
-        padding: 5px 10px;
-        color: blue;
-    }
+  #main #comments {
+    margin: 0px;
+    width: auto;
+    background: red;
+  }
+  #main #buttons {
+    padding: 5px 10px;
+    color: blue;
+  }
 }
 #main #content {
-    margin: 0 7.6%;
-    width: auto;
+  margin: 0 7.6%;
+  width: auto;
 }
 #nav-below {
-    border-bottom: 1px solid #ddd;
-    margin-bottom: 1.625em;
-    background-image: url(http://www.example.com/images/im.jpg);
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 1.625em;
+  background-image: url(http://www.example.com/images/im.jpg);
 }
 ```
