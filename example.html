@@ -1,25 +1,25 @@
 <body>
-<style>
+  <style>
     body {
-        font-family: arial, sans-serif;
-        font-size: 18px;
+      font-family: arial, sans-serif;
+      font-size: 18px;
     }
     pre {
-        background: #eee;
-        padding: 10px;
-        width: 800px;
-        white-space: pre-wrap;
-        word-break: break-all;
+      background: #eee;
+      padding: 10px;
+      width: 800px;
+      white-space: pre-wrap;
+      word-break: break-all;
     }
-</style>
+  </style>
 
-<!-- Add this if you're supporting IE 7, 8 -->
-<script type="text/javascript" src="json2.js"></script>
-<script type="text/javascript" src="cssjson.js"></script>
-<script type="text/javascript">
-
+  <!-- Add this if you're supporting IE 7, 8 -->
+  <script type="text/javascript" src="json2.js"></script>
+  <script type="text/javascript" src="cssjson.js"></script>
+  <script type="text/javascript">
     // Dummy CSS
-    var css = '\
+    var css =
+      '\
     @media (max-width: 800px) {\n\
     	#main #comments {\n\
     		margin: 0px;\n\
@@ -47,24 +47,29 @@
     exampleCSSJSON(css);
 
     function exampleCSSJSON(cssString) {
-		var json = CSSJSON.toJSON(cssString);
-    	if (typeof console != 'undefined') {
-    	    console.log('JSON:\n');
-    	    console.dir(json);
-    	    console.log('\n\n');
-	    }
-        document.write('<strong>JSON</strong><br/><pre>'+JSON.stringify(json, undefined, 2)+'</pre>');
+      var json = CSSJSON.toJSON(cssString);
+      if (typeof console != "undefined") {
+        console.log("JSON:\n");
+        console.dir(json);
+        console.log("\n\n");
+      }
+      document.write(
+        "<strong>JSON</strong><br/><pre>" +
+          JSON.stringify(json, undefined, 2) +
+          "</pre>"
+      );
 
-    	var css = CSSJSON.toCSS(json);
-    	if (typeof console != 'undefined') {
-    	    console.log('CSS:\n');
-    	    console.log(css + '\n\n');
-	    }
+      var css = CSSJSON.toCSS(json);
+      if (typeof console != "undefined") {
+        console.log("CSS:\n");
+        console.log(css + "\n\n");
+      }
     }
 
-	// Sample to .toHEAD
-	var rgbInterval = 2000;
-	var rgbCss = '\
+    // Sample to .toHEAD
+    var rgbInterval = 2000;
+    var rgbCss =
+      "\
 		body {\n\
 			-webkit-transition: background-color ?ms linear;\n\
 			-moz-transition: background-color ?ms linear;\n\
@@ -77,32 +82,39 @@
 			animation-iteration-count: 2;\n\
 			margin: 20px;\n\
 		}\
-	';
-	CSSJSON.toHEAD(rgbCss.replace('?', Math.abs(0.6 * rgbInterval)));
+	";
+    CSSJSON.toHEAD(rgbCss.replace("?", Math.abs(0.6 * rgbInterval)));
 
-	function runRGB(btn) {
-		if (window._rgbTimer) {
-			btn.innerHTML = '&#9654; RGB';
-			clearInterval(window._rgbTimer);
-			delete window._rgbTimer;
-			return;
-		} else {
-			window._rgbC = (window._rgbC) ? window._rgbC : [0, '#ff1935', '#00bd3a', '#0063cd', '#fff'];
-		}
-		var getRGB = function() {
-			window._rgbC[0] = (window._rgbC[0] >= window._rgbC.length - 1) ? 1 : window._rgbC[0] += 1;
-			return window._rgbC[window._rgbC[0]];
-		}
-		var doCSSChange = function() {
-			CSSJSON.toHEAD('body { background-color: ' + (cc = getRGB()) + '; }', 'RGB');
-			btn.innerHTML = '&#10073;&#10073; RGB (' + cc + ')';
-		}
-		if (!window._rgbTimer) {
-			doCSSChange();
-			window._rgbTimer = setInterval(doCSSChange, rgbInterval);
-		}
-	}
-
-</script>
-<button onclick="runRGB(this);">&#9654; RGB</button>
+    function runRGB(btn) {
+      if (window._rgbTimer) {
+        btn.innerHTML = "&#9654; RGB";
+        clearInterval(window._rgbTimer);
+        delete window._rgbTimer;
+        return;
+      } else {
+        window._rgbC = window._rgbC
+          ? window._rgbC
+          : [0, "#ff1935", "#00bd3a", "#0063cd", "#fff"];
+      }
+      var getRGB = function () {
+        window._rgbC[0] =
+          window._rgbC[0] >= window._rgbC.length - 1
+            ? 1
+            : (window._rgbC[0] += 1);
+        return window._rgbC[window._rgbC[0]];
+      };
+      var doCSSChange = function () {
+        CSSJSON.toHEAD(
+          "body { background-color: " + (cc = getRGB()) + "; }",
+          "RGB"
+        );
+        btn.innerHTML = "&#10073;&#10073; RGB (" + cc + ")";
+      };
+      if (!window._rgbTimer) {
+        doCSSChange();
+        window._rgbTimer = setInterval(doCSSChange, rgbInterval);
+      }
+    }
+  </script>
+  <button onclick="runRGB(this);">&#9654; RGB</button>
 </body>

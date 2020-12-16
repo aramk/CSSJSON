@@ -5,3 +5,5 @@ Thumbs.db
 .settings
 .buildpath
 .idea
+node_modules
+dist
