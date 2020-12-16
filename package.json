@@ -9,7 +9,8 @@
     "lint": "npx eslint '**/*.{ts,js}' --fix",
     "prepare": "npm run build",
     "prepublishOnly": "npm run build",
-    "test": "jest"
+    "test": "jest",
+    "build:toc": "npx doctoc ./README.md"
   },
   "devDependencies": {
     "@types/jest": "^26.0.19",
