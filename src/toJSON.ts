@@ -26,20 +26,20 @@ const defaultArgs = {
   split: false,
 };
 
-export interface attributes {
+export interface cssAttributes {
   [attribute: string]: string
 }
 
 export interface children {
   [attribute: string]: {
     children: children,
-    attributes: attributes
+    attributes: cssAttributes
   }
 }
 
 export interface output {
   children: children,
-  attributes: attributes
+  attributes: cssAttributes
 }
 
 export const toJSON = function (
