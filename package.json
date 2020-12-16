@@ -7,6 +7,7 @@
   "scripts": {
     "build": "npm run lint && webpack --mode production",
     "lint": "npx eslint '**/*.{ts,js}' --fix",
+    "prepare": "npm run build",
     "prepublishOnly": "npm run build",
     "test": "jest"
   },
