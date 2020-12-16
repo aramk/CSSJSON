@@ -8,33 +8,25 @@ Released under the MIT license.
 
 ## Installation
 
-### Bower
-
-```bash
-bower install aramk-css-to-json --save
-```
-
 ### NPM
 
 ```bash
-npm install css-to-json
+npm install cssjson
 ```
 
 ## Usage
 
 ### JavaScript
 
-```javascript
+```typescript
+
+import { toCSS, toJSON } from 'cssjson';
+
 // To JSON
-var json = CSSJSON.toJSON(cssString);
+const json = toJSON(cssString);
 
 // To CSS
-var css = CSSJSON.toCSS(jsonObject);
-
-// Appending to DOM (HTMLHeadElement)
-// alias (global): createCSS(css);
-// CSSJSON.toHEAD(json);
-CSSJSON.toHEAD(css); // returns HTMLStyleElement
+const css = toCSS(jsonObject);
 ```
 
 ### npm run / CLI
@@ -47,7 +39,7 @@ $ cssjson input_file [--to-css] [--output|-o output_file]
 
 ## Sample
 
-See example.html
+See `src/__tests__/toCSSandJSON.spec.ts` 
 
 ### JSON
 
