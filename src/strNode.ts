@@ -1,8 +1,9 @@
 import { toCSS } from './toCSS';
+import { JSONNode } from './toJSON';
 
 export const strNode = function (
   name: string,
-  value: Record<any, any>,
+  value: JSONNode,
   depth = 0
 ): string {
   let cssString = '';
