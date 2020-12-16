@@ -1,5 +1,6 @@
 import { strAttr } from './strAttr';
 import { strNode } from './strNode';
+import { JSONNode } from './toJSON';
 
 /**
  * @param node
@@ -11,7 +12,7 @@ import { strNode } from './strNode';
  *            Whether to add line breaks in the output.
  */
 export const toCSS = function (
-  node: Record<any, any>,
+  node: JSONNode,
   depth = 0,
   breaks = 0
 ): string {
@@ -19,13 +20,7 @@ export const toCSS = function (
   if (node.attributes) {
     for (const i in node.attributes) {
       const att = node.attributes[i];
-      if (att instanceof Array) {
-        for (let j = 0; j < att.length; j++) {
-          cssString += strAttr(i, att[j], depth);
-        }
-      } else {
-        cssString += strAttr(i, att, depth);
-      }
+      cssString += strAttr(i, att, depth);
     }
   }
   if (node.children) {

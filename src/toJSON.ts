@@ -37,7 +37,7 @@ export interface Children {
   }
 }
 
-export interface output {
+export interface JSONNode {
   children: Children,
   attributes: CssAttributes
 }
@@ -45,7 +45,7 @@ export interface output {
 export const toJSON = function (
   cssString: string,
   args = defaultArgs
-): output {
+): JSONNode {
   const node: any = {
     children: {},
     attributes: {},
